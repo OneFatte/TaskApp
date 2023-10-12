@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const TaskRoutes = require('./routes/taskRoutes');
 const UserModel = require('./model/User');
 const PORT = 3000;
@@ -8,9 +9,11 @@ const PORT = 3000;
 const SECRET_KEY = 'private monkey';
 const server = express()
 
+server.use(cors())
 server.use(express.json())
 
-server.use('/auth', (req, res) => {
+
+server.post('/auth', (req, res) => {
     const { email, pass } = req.body
     const validatedUser = UserModel.validateUser(email, pass)
 
