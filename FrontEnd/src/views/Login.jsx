@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/login.css";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -11,13 +11,18 @@ export default function Login() {
         const API_URL = import.meta.env.VITE_API_Tasks_URL;
         fetch(`${API_URL}/auth`, {
             method: "POST",
-            headers: { "Content-type": "application/json;charset=UTF-8" },
+            headers: { "Content-type": "application/json" },
             body: JSON.stringify({
                 "email": email,
                 "pass": password
             })
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(json => {
                 if (json.token) {
                     window.localStorage.setItem("Token", json.token);
@@ -26,6 +31,10 @@ export default function Login() {
                     alert('Datos incorrectos');
                 }
             })
+            .catch(error => {
+                console.error("Error en la solicitud:", error);
+                alert('Hubo un problema en la autenticación');
+            });
     };
 
     //-----------------------------------------------------------------------------video4 1:16min
