@@ -5,8 +5,13 @@ const cors = require('cors');
 const TaskRoutes = require('./routes/taskRoutes');
 const UserModel = require('./model/User');
 const PORT = 3000;
+require('dotenv').config()
+console.log(process.env)
 
-const SECRET_KEY = 'private monkey';
+const SECRET_KEY = process.env.SECRET_KEY
+const url = process.env.mongoURL
+
+
 const server = express()
 
 server.use(cors())
@@ -42,13 +47,11 @@ const validateToken = (req, res, next) => {
     }
 }
 
-
-
 server.use('/api/v1/tasks', validateToken, TaskRoutes);
 
 const mongooseConnect = async () => {
     try {
-        await mongoose.connect('mongodb+srv://camiloandres798:4556marce72@clusterngnl.y3efii9.mongodb.net/TaskApp?retryWrites=true&w=majority');
+        await mongoose.connect(url);
         console.log("Success Conexion");
     } catch (error) {
         console.log("Error");
