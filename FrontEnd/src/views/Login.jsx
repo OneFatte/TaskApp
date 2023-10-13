@@ -20,7 +20,7 @@ export default function Login() {
             .then(response => response.json())
             .then(json => {
                 if (json.token) {
-                    window.sessionStorage.setItem("Token", json.token);
+                    window.localStorage.setItem("Token", json.token);
                     navigate("/tasks")
                 } else {
                     alert('Datos incorrectos');
