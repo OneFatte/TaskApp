@@ -6,9 +6,9 @@ export default function Tasks() {
     const navigate = useNavigate();
 
     const getTasks = () => {
-        const API_URL = import.meta.env.VITE_API_Tasks_URL;
+        const API_URL = import.meta.env.VITE_API_URL;
 
-        fetch(`${API_URL}/api/v1/tasks/`, {
+        fetch(`${API_URL}/api/v1/tasks`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
