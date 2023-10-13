@@ -8,7 +8,8 @@ export default function Login() {
     const navigate = useNavigate();
 
     const login = () => {
-        fetch("http://localhost:3000/auth", {
+        const API_URL = import.meta.env.VITE_API_Tasks_URL;
+        fetch(`${API_URL}/auth`, {
             method: "POST",
             headers: { "Content-type": "application/json;charset=UTF-8" },
             body: JSON.stringify({
