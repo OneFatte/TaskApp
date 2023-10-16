@@ -3,12 +3,15 @@ import "../assets/login.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const login = () => {
-        const API_URL = import.meta.env.VITE_API_Tasks_URL;
+    const loginApi = () => {
+        const API_URL = import.meta.env.VITE_API_URL
+        // const API_URL = 'https://backend-taskapp.onrender.com'
+        console.log(API_URL);
         fetch(`${API_URL}/auth`, {
             method: "POST",
             headers: { "Content-type": "application/json" },
@@ -52,10 +55,8 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        login();
-
+        loginApi();
     }
-
 
     return <>
         <div className='contenedor'>

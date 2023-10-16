@@ -12,7 +12,7 @@ export default function Tasks() {
             method: "GET",
             headers: {
                 "Content-type": "application/json",
-                "authorization": `Bearer ${window.localStorage.getItem('Token')}`
+                "Authorization": `Bearer ${window.localStorage.getItem('Token')}`
             }
         })
             .then(response => {
