@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Task() {
@@ -29,6 +29,10 @@ export default function Task() {
                 console.log(tarea);
             })
     };
+
+    useEffect(() => {
+        getTask();
+    }, []);
 
     return <div>
         <h1>Detalles de la tarea</h1>
