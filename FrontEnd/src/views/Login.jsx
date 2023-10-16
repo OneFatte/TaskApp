@@ -10,8 +10,6 @@ export default function Login() {
 
     const loginApi = () => {
         const API_URL = import.meta.env.VITE_API_URL
-        // const API_URL = 'https://backend-taskapp.onrender.com'
-        console.log(API_URL);
         fetch(`${API_URL}/auth`, {
             method: "POST",
             headers: { "Content-type": "application/json" },

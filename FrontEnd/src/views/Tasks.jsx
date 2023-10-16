@@ -22,7 +22,6 @@ export default function Tasks() {
                 return response.json();
             })
             .then(json => {
-                // console.log(json);
                 setTareas(json.tasks);
                 console.log(tareas);
             })
