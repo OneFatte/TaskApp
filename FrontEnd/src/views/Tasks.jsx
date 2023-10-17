@@ -23,8 +23,11 @@ export default function Tasks() {
             })
             .then(json => {
                 setTareas(json.tasks);
-                console.log(tareas);
             })
+            .catch(error => {
+                console.error("Error en la solicitud:", error);
+                alert('No carga las tareas');
+            });
     };
 
     useEffect(() => {
@@ -44,7 +47,7 @@ export default function Tasks() {
                                 <br />
                                 <h6 className="card-subtitle mb-2 text-body-secondary">ID: {elemento._id}</h6>
                                 <p className="card-text"> {elemento.description}</p>
-                                <a className="card-link" onClick={() => navigate(`/task${elemento.id}`)}>View</a>
+                                <button className="card-link btn btn-primary" onClick={() => navigate(`/task/${elemento._id}`)}>View</button>
                             </div>
                         </div>
                     </div>

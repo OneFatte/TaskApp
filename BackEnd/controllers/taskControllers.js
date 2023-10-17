@@ -27,9 +27,9 @@ const insertTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
     const { id } = req.params;
-    const { title, descripcion, deadline } = req.body;
+    const { descripcion } = req.body;
 
-    await TaskModel.updateTask(id, { title, descripcion, deadline })
+    await TaskModel.updateTask(id, { descripcion })
         .then((response) => {
             res.status(201).send({ message: "Tarea actualizada" })
         })

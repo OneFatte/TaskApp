@@ -34,17 +34,12 @@ const getTask = async (id) => {
 
 const insertTask = async (task) => {
     return await Task.create(task)
-
 }
 
 const updateTask = async (id, newTask) => {
     const oldTask = await Task.findById(id);
 
-    oldTask.title = newTask.title;
     oldTask.descripcion = newTask.descripcion;
-    oldTask.deadline = newTask.deadline;
-    oldTask.done = newTask.done;
-
     return await oldTask.save();
 }
 

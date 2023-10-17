@@ -18,9 +18,6 @@ export default function SideBar() {
                     <Link className="nav-link text-white" to={`login`}>Login</Link>
                 </li>
                 <li>
-                    <Link className="nav-link text-white" to={`task/1`}>Ver Contacto</Link>
-                </li>
-                <li>
                     <Link className="nav-link active" to={`tasks`}>Contactos</Link>
                 </li>
             </ul>
